@@ -3,8 +3,10 @@ package frontend_viewcontroller;
 import backend_models.*;
 import backend_models.TextFile.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.swing.*;
+import javax.swing.ImageIcon;
 
 /**
  * This class is responsible for displaying the data from the backend, and
@@ -63,6 +65,7 @@ public class MainViewDisplay extends JFrame {
     JButton sortBttn;
     JButton probsBttn;
     JButton approxDecryptBttn;
+    JLabel picContentPane;
 
     /*
      *
@@ -103,6 +106,11 @@ public class MainViewDisplay extends JFrame {
         //this.textContentField.setSize(500, 500);
 
         this.textPane = new JScrollPane(this.textContentField);
+        
+        this.picContentPane = new JLabel();
+        this.picContentPane.setVerticalAlignment(SwingConstants.TOP);
+        this.picContentPane.setHorizontalAlignment(SwingConstants.LEFT);
+        
         //this.textPane.setSize(500, 500);
 
         //this.textContentField.setText("Test\n Hello\n\n");
@@ -174,17 +182,17 @@ public class MainViewDisplay extends JFrame {
         c.gridy = 0;
         c.gridwidth = 1;
         c.gridheight = 1;
-        mainDisplayPane.add(this.textContentLabel, c);
+        mainDisplayPane.add(this.picContentPane, c);
 
-        c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 2;
-        c.gridheight = 2;
-        c.fill = GridBagConstraints.BOTH;
-        c.ipady = 300;
-        c.ipadx = 250;
-        mainDisplayPane.add(this.textPane, c);
+//        c = new GridBagConstraints();
+//        c.gridx = 0;
+//        c.gridy = 1;
+//        c.gridwidth = 2;
+//        c.gridheight = 2;
+//        c.fill = GridBagConstraints.BOTH;
+//        c.ipady = 300;
+//        c.ipadx = 250;
+//        mainDisplayPane.add(this.textPane, c);
 
         c = new GridBagConstraints();
         c.gridx = 2;
@@ -193,38 +201,38 @@ public class MainViewDisplay extends JFrame {
         c.gridheight = 1;
         mainDisplayPane.add(this.openSourceFileButton, c);
 
-        c = new GridBagConstraints();
-        c.gridx = 2;
-        c.gridy = 1;
-        c.gridwidth = 1;
-        c.anchor = GridBagConstraints.LINE_START;
-        c.gridheight = 1;
-        c.weighty = 1;
-        mainDisplayPane.add(this.encryptSourceButton, c);
+//        c = new GridBagConstraints();
+//        c.gridx = 2;
+//        c.gridy = 1;
+//        c.gridwidth = 1;
+//        c.anchor = GridBagConstraints.LINE_START;
+//        c.gridheight = 1;
+//        c.weighty = 1;
+//        mainDisplayPane.add(this.encryptSourceButton, c);
 
-        c = new GridBagConstraints();
-        c.gridx = 3;
-        c.gridy = 1;
-        mainDisplayPane.add(this.probsBttn, c);
+//        c = new GridBagConstraints();
+//        c.gridx = 3;
+//        c.gridy = 1;
+//        mainDisplayPane.add(this.probsBttn, c);
 
-        c = new GridBagConstraints();
-        c.gridx = 2;
-        c.gridy = 3;
-        c.anchor = GridBagConstraints.LINE_START;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weighty = 1;
-        mainDisplayPane.add(this.decryptSourceButton, c);
+//        c = new GridBagConstraints();
+//        c.gridx = 2;
+//        c.gridy = 3;
+//        c.anchor = GridBagConstraints.LINE_START;
+//        c.gridwidth = 1;
+//        c.gridheight = 1;
+//        c.weighty = 1;
+//        mainDisplayPane.add(this.decryptSourceButton, c);
         
-        c = new GridBagConstraints();
-        c.gridx = 3;
-        c.gridy = 3;
-        mainDisplayPane.add(this.sortBttn, c);
+//        c = new GridBagConstraints();
+//        c.gridx = 3;
+//        c.gridy = 3;
+//        mainDisplayPane.add(this.sortBttn, c);
         
-        c = new GridBagConstraints();
-        c.gridx = 3;
-        c.gridy = 6;
-        mainDisplayPane.add(this.approxDecryptBttn, c);
+//        c = new GridBagConstraints();
+//        c.gridx = 3;
+//        c.gridy = 6;
+//        mainDisplayPane.add(this.approxDecryptBttn, c);
 
         c = new GridBagConstraints();
         c.gridx = 2;
@@ -248,16 +256,16 @@ public class MainViewDisplay extends JFrame {
      * Write below all the methods for displaying data into the GUI using this
      * MainViewDisplay object
      */
-    void updateTextContentField() {
+    void updatePicContentField() {
 
-        if (this.theBackendModel.theTextFile == null) {
+        if (this.theBackendModel.thePicFile == null) {
 
-            this.textContentField.setText("");
+            this.picContentPane.setIcon(null);
 
         } else {
 
-            String txt = this.theBackendModel.theTextFile.fileContent;
-            this.textContentField.setText(txt);
+//            BufferedImage BuffImage = this.theBackendModel.thePicFile.getAsBufferedImage();
+            this.picContentPane.setIcon(this.theBackendModel.thePicFile.getAsImageIcon());
         }
     }
 
@@ -282,6 +290,6 @@ public class MainViewDisplay extends JFrame {
             return thePath;
         }
 
-        return null;
-    }
+        return null;       
+    }    
 }

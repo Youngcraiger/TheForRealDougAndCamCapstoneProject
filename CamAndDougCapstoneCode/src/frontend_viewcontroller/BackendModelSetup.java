@@ -21,12 +21,11 @@ import backend_models.*;
  */
 public class BackendModelSetup {
 
-    TextFile theTextFile;
-  
+    PicFile thePicFile;
 
     public BackendModelSetup() {
 
-        this.theTextFile = null;
+        this.thePicFile = null;
        
     }
 }

@@ -5,7 +5,7 @@ import backend_models.TextFile;
 import backend_models.EnDecrypter;
 import backend_models.CryptoAnalysis;
 import backend_models.CharProbability;
-import java.awt.Point;
+import java.awt.*;
 
 
 
@@ -66,12 +66,14 @@ public class ModelsAndViewsController {
         public void mouseClicked(MouseEvent e) {
             System.out.print("mouse click"); // comment these print statements out - it's for debug only.
             mouseGetPoint(e);
+
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
             System.out.print("mouse press");
             mouseGetPoint(e);
+
         }
 
         @Override
@@ -96,6 +98,19 @@ public class ModelsAndViewsController {
         public void mouseDragged(MouseEvent e) {
             System.out.print("mouse dragged");
             mouseGetPoint(e);
+            Point p = e.getPoint();
+            Color randColor = theBackendModel.thePicFile.getRandomColour();
+            theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
+            theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
+            theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
+            theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
+            
+            theMainViewDisplay.updatePicContentField();
         }
 
         @Override
@@ -107,6 +122,11 @@ public class ModelsAndViewsController {
         private void mouseGetPoint(MouseEvent e) {
             Point p = e.getPoint();
             System.out.println(" x y: " + p.x + " " + p.y);
+        }
+        
+        private void paint(MouseEvent e){
+            Point p = e.getPoint();
+            
         }
     }
 
@@ -147,8 +167,8 @@ public class ModelsAndViewsController {
             if (pathToFile != null) {
                 try {
 
-                    theBackendModel.theTextFile = new TextFile(pathToFile);
-                    theMainViewDisplay.updateTextContentField();
+                    theBackendModel.thePicFile = new PicFile(pathToFile);
+                    theMainViewDisplay.updatePicContentField();
                 } catch (IOException ex) {
                     Logger.getLogger(ModelsAndViewsController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -166,7 +186,7 @@ public class ModelsAndViewsController {
 
             if (pathToFile != null) {
                 try {
-                    theBackendModel.theTextFile.saveToDisk(pathToFile);
+                    theBackendModel.thePicFile.saveToDisk(pathToFile, "jpg");
                 } catch (IOException ex) {
                     Logger.getLogger(ModelsAndViewsController.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -176,107 +196,107 @@ public class ModelsAndViewsController {
         }
     }
 
-    private class EncryptSourceAction implements ActionListener {
+//    private class EncryptSourceAction implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//            if (theBackendModel.thePicFile != null) {
+//
+//                theBackendModel.thePicFile.encrypt();
+//            }
+//            theMainViewDisplay.updatePicContentField();
+//        }
+//    }
 
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            if (theBackendModel.theTextFile != null) {
+//    private class ProbsAction implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            if (theBackendModel.theTextFile == null) {
+//                return;
+//            }
+//
+//            CharProbability[] charProbs = CryptoAnalysis.charProbabilitiesOf(theBackendModel.theTextFile.fileContent);
+//
+//            String charProbStr = " ";
+//            for (int x = 0; x < charProbs.length; x++) {
+//
+//                CharProbability aCharProb = charProbs[x];
+//                String aCharProbAsStr = aCharProb.toString();
+//                charProbStr = charProbStr + aCharProbAsStr + "\n";
+//            }
+//
+//            theBackendModel.theTextFile.fileContent = charProbStr;
+//            theMainViewDisplay.updatePicContentField();
+//
+//        }
+//    }
 
-                theBackendModel.theTextFile.encrypt();
-            }
-            theMainViewDisplay.updateTextContentField();
-        }
-    }
+//    private class SortAction implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            if (theBackendModel.theTextFile == null) {
+//                return;
+//            }
+//
+//            CharProbability[] charProbs = CryptoAnalysis.sortedCharProbabilitiesOf(theBackendModel.theTextFile.fileContent);
+//
+//            String charProbStr = " ";
+//            for (int x = 0; x < charProbs.length; x++) {
+//
+//                CharProbability aCharProb = charProbs[x];
+//                String aCharProbAsStr = aCharProb.toString();
+//                charProbStr = charProbStr + aCharProbAsStr + (char) 161;
+//            }
+//
+//            theBackendModel.theTextFile.fileContent = charProbStr;
+//            theMainViewDisplay.updatePicContentField();
+//
+//        }
+//    }
 
-    private class ProbsAction implements ActionListener {
+//    private class DecryptSourceAction implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            if (theBackendModel.theTextFile != null) {
+//                theBackendModel.theTextFile.decrypt();
+//            }
+//            theMainViewDisplay.updatePicContentField();
+//        }
+//    }
 
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            if (theBackendModel.theTextFile == null) {
-                return;
-            }
-
-            CharProbability[] charProbs = CryptoAnalysis.charProbabilitiesOf(theBackendModel.theTextFile.fileContent);
-
-            String charProbStr = " ";
-            for (int x = 0; x < charProbs.length; x++) {
-
-                CharProbability aCharProb = charProbs[x];
-                String aCharProbAsStr = aCharProb.toString();
-                charProbStr = charProbStr + aCharProbAsStr + "\n";
-            }
-
-            theBackendModel.theTextFile.fileContent = charProbStr;
-            theMainViewDisplay.updateTextContentField();
-
-        }
-    }
-
-    private class SortAction implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            if (theBackendModel.theTextFile == null) {
-                return;
-            }
-
-            CharProbability[] charProbs = CryptoAnalysis.sortedCharProbabilitiesOf(theBackendModel.theTextFile.fileContent);
-
-            String charProbStr = " ";
-            for (int x = 0; x < charProbs.length; x++) {
-
-                CharProbability aCharProb = charProbs[x];
-                String aCharProbAsStr = aCharProb.toString();
-                charProbStr = charProbStr + aCharProbAsStr + (char) 161;
-            }
-
-            theBackendModel.theTextFile.fileContent = charProbStr;
-            theMainViewDisplay.updateTextContentField();
-
-        }
-    }
-
-    private class DecryptSourceAction implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            if (theBackendModel.theTextFile != null) {
-                theBackendModel.theTextFile.decrypt();
-            }
-            theMainViewDisplay.updateTextContentField();
-        }
-    }
-
-    private class ApproxDecryptAction implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            try {
-                String pathToFile = theMainViewDisplay.showOpenDialogue();
-                if (pathToFile == null) {
-                    return;
-                }
-
-                String charListFile = TextFile.readFile(pathToFile);
-                String[] charListArray = charListFile.split("" + (char) 161); //¡
-
-                String extractedList = "";
-                for (int j = 0; j < charListArray.length; j++) {
-                    char extractedChar = charListArray[j].charAt(0);
-                    extractedList = extractedList + extractedChar;
-                }
-
-                String decryptedLetters = CryptoAnalysis.approxDecrypt(theBackendModel.theTextFile.fileContent, extractedList);
-                theBackendModel.theTextFile.fileContent = decryptedLetters;
-                theMainViewDisplay.updateTextContentField();
-            } catch (IOException ex) {
-                Logger.getLogger(ModelsAndViewsController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+//    private class ApproxDecryptAction implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//            try {
+//                String pathToFile = theMainViewDisplay.showOpenDialogue();
+//                if (pathToFile == null) {
+//                    return;
+//                }
+//
+//                String charListFile = TextFile.readFile(pathToFile);
+//                String[] charListArray = charListFile.split("" + (char) 161); //¡
+//
+//                String extractedList = "";
+//                for (int j = 0; j < charListArray.length; j++) {
+//                    char extractedChar = charListArray[j].charAt(0);
+//                    extractedList = extractedList + extractedChar;
+//                }
+//
+//                String decryptedLetters = CryptoAnalysis.approxDecrypt(theBackendModel.theTextFile.fileContent, extractedList);
+//                theBackendModel.theTextFile.fileContent = decryptedLetters;
+//                theMainViewDisplay.updatePicContentField();
+//            } catch (IOException ex) {
+//                Logger.getLogger(ModelsAndViewsController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//    }
 
     /*
      *
@@ -303,10 +323,12 @@ public class ModelsAndViewsController {
 
         this.theMainViewDisplay.saveResultToFileButton.addActionListener(new SaveResultToFileAction());
         this.theMainViewDisplay.openSourceFileButton.addActionListener(new OpenSourceFileAction());
-        this.theMainViewDisplay.encryptSourceButton.addActionListener(new EncryptSourceAction());
-        this.theMainViewDisplay.decryptSourceButton.addActionListener(new DecryptSourceAction());
-        this.theMainViewDisplay.probsBttn.addActionListener(new ProbsAction());
-        this.theMainViewDisplay.sortBttn.addActionListener(new SortAction());
-        this.theMainViewDisplay.approxDecryptBttn.addActionListener(new ApproxDecryptAction());
+        this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
+        this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
+//        this.theMainViewDisplay.encryptSourceButton.addActionListener(new EncryptSourceAction());
+//        this.theMainViewDisplay.decryptSourceButton.addActionListener(new DecryptSourceAction());
+//        this.theMainViewDisplay.probsBttn.addActionListener(new ProbsAction());
+//        this.theMainViewDisplay.sortBttn.addActionListener(new SortAction());
+//        this.theMainViewDisplay.approxDecryptBttn.addActionListener(new ApproxDecryptAction());
     }
 }
