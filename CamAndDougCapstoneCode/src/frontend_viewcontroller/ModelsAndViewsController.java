@@ -126,7 +126,22 @@ public class ModelsAndViewsController {
         
         private void paint(MouseEvent e){
             Point p = e.getPoint();
+                    
+        }
+        public void randPaint (MouseEvent e){
+            Point p = e.getPoint();
+            Color randColor = theBackendModel.thePicFile.getRandomColour();
+            theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
+            theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
+            theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
+            theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
+            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
             
+            theMainViewDisplay.updatePicContentField();
         }
     }
 
