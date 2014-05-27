@@ -151,7 +151,7 @@ public class PicFile {
     private Random yCoord = new Random();
     
     public Point getRandomPoint(){
-        Point p = new Point(xCoord.nextInt(1152), yCoord.nextInt(648));
+        Point p = new Point(xCoord.nextInt(1151), yCoord.nextInt(647));
         return p;
     }
     
