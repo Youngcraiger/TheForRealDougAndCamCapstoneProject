@@ -7,8 +7,6 @@ import backend_models.CryptoAnalysis;
 import backend_models.CharProbability;
 import java.awt.*;
 
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,15 +44,15 @@ import javax.swing.JRadioButton;
  * @author cheng
  */
 public class ModelsAndViewsController {
-/* Put the following private class into your ModelsAndViewsController class
- * just like the other private classes you wrote for implementing ActionListeners
- *
- * Then in the initController of the ModelsAndViewsController class,
- * assuming you have named the JLabel (that will display the ImageIcon) as picContentPane,
- * add these two lines:
-        this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
-        this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
- */
+    /* Put the following private class into your ModelsAndViewsController class
+     * just like the other private classes you wrote for implementing ActionListeners
+     *
+     * Then in the initController of the ModelsAndViewsController class,
+     * assuming you have named the JLabel (that will display the ImageIcon) as picContentPane,
+     * add these two lines:
+     this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
+     this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
+     */
 
     private class MouseAction extends MouseAdapter {
         // You don't need every one of these methods.
@@ -66,6 +64,22 @@ public class ModelsAndViewsController {
         public void mouseClicked(MouseEvent e) {
             System.out.print("mouse click"); // comment these print statements out - it's for debug only.
             mouseGetPoint(e);
+            for (int i = 0; i < 1000000; i++) {
+                Point p = theBackendModel.thePicFile.getRandomPoint();
+                Color randColor = theBackendModel.thePicFile.getRandomColour();
+                theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
+                theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
+                theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
+                theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
+
+                theMainViewDisplay.updatePicContentField();
+
+            }
 
         }
 
@@ -98,19 +112,6 @@ public class ModelsAndViewsController {
         public void mouseDragged(MouseEvent e) {
             System.out.print("mouse dragged");
             mouseGetPoint(e);
-            Point p = e.getPoint();
-            Color randColor = theBackendModel.thePicFile.getRandomColour();
-            theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
-            theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
-            theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
-            theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
-            
-            theMainViewDisplay.updatePicContentField();
         }
 
         @Override
@@ -123,25 +124,28 @@ public class ModelsAndViewsController {
             Point p = e.getPoint();
             System.out.println(" x y: " + p.x + " " + p.y);
         }
-        
-        private void paint(MouseEvent e){
+
+        private void paint(MouseEvent e) {
             Point p = e.getPoint();
-                    
+
         }
-        public void randPaint (MouseEvent e){
-            Point p = e.getPoint();
-            Color randColor = theBackendModel.thePicFile.getRandomColour();
-            theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
-            theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
-            theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
-            theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
-            theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
-            
-            theMainViewDisplay.updatePicContentField();
+
+        public void randPaint() {
+            for (int i = 0; i < 1000000; i++) {
+                Point p = theBackendModel.thePicFile.getRandomPoint();
+                Color randColor = theBackendModel.thePicFile.getRandomColour();
+                theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
+                theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
+                theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
+                theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
+                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
+
+                theMainViewDisplay.updatePicContentField();
+            }
         }
     }
 
@@ -211,18 +215,22 @@ public class ModelsAndViewsController {
         }
     }
 
-//    private class EncryptSourceAction implements ActionListener {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent ae) {
-//            if (theBackendModel.thePicFile != null) {
-//
-//                theBackendModel.thePicFile.encrypt();
-//            }
-//            theMainViewDisplay.updatePicContentField();
-//        }
-//    }
+    private class RandomPaintAction implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+
+                for (int i = 0; i < 1000000; i++) {
+                    if (theBackendModel.thePicFile != null) {
+                        theBackendModel.thePicFile.randPaint();
+                        theMainViewDisplay.updatePicContentField();
+                        
+                    }
+                    
+                }
+
+            }
+      }
 //    private class ProbsAction implements ActionListener {
 //
 //        @Override
@@ -247,7 +255,6 @@ public class ModelsAndViewsController {
 //
 //        }
 //    }
-
 //    private class SortAction implements ActionListener {
 //
 //        @Override
@@ -272,7 +279,6 @@ public class ModelsAndViewsController {
 //
 //        }
 //    }
-
 //    private class DecryptSourceAction implements ActionListener {
 //
 //        @Override
@@ -284,7 +290,6 @@ public class ModelsAndViewsController {
 //            theMainViewDisplay.updatePicContentField();
 //        }
 //    }
-
 //    private class ApproxDecryptAction implements ActionListener {
 //
 //        @Override
@@ -340,6 +345,7 @@ public class ModelsAndViewsController {
         this.theMainViewDisplay.openSourceFileButton.addActionListener(new OpenSourceFileAction());
         this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
         this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
+        this.theMainViewDisplay.startRandPaintBttn.addActionListener(new RandomPaintAction());
 //        this.theMainViewDisplay.encryptSourceButton.addActionListener(new EncryptSourceAction());
 //        this.theMainViewDisplay.decryptSourceButton.addActionListener(new DecryptSourceAction());
 //        this.theMainViewDisplay.probsBttn.addActionListener(new ProbsAction());

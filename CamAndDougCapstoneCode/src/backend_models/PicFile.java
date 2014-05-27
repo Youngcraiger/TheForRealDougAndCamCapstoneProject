@@ -3,6 +3,7 @@
 package backend_models;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Random;
@@ -145,4 +146,34 @@ public class PicFile {
     public Color getRandomColour(){
         return new Color(randomNumber.nextFloat(), randomNumber.nextFloat(), randomNumber.nextFloat());
     }
+    
+    private Random xCoord = new Random();
+    private Random yCoord = new Random();
+    
+    public Point getRandomPoint(){
+        Point p = new Point(xCoord.nextInt(1152), yCoord.nextInt(648));
+        return p;
+    }
+    
+    
+    
+    
+    
+    
+    public void randPaint() {
+           
+                Point p = getRandomPoint();
+                Color randColor = getRandomColour();
+                setColor(p.x + 1, p.y, randColor);
+                setColor(p.x, p.y + 1, randColor);
+                setColor(p.x, p.y, randColor);
+                setColor(p.x + 1, p.y + 1, randColor);
+                setColor(p.x + 2, p.y + 2, randColor);
+                setColor(p.x, p.y + 2, randColor);
+                setColor(p.x + 2, p.y, randColor);
+                setColor(p.x + 2, p.y + 1, randColor);
+                setColor(p.x + 1, p.y + 2, randColor);
+
+           
+        }
 }
