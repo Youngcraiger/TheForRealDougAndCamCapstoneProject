@@ -59,6 +59,7 @@ public class MainViewDisplay extends JFrame {
     JButton saveResultToFileButton;
     JButton encryptSourceButton;
     JButton decryptSourceButton;
+    JButton startRandPaintBttn;
     JScrollPane textPane;
     JLabel probsLabel;
     JLabel sortProbsLabel;
@@ -137,6 +138,9 @@ public class MainViewDisplay extends JFrame {
         this.approxDecryptBttn = new JButton();
         this.approxDecryptBttn.setText("Approximate Decrypt");
         
+        this.startRandPaintBttn = new JButton();
+        this.startRandPaintBttn.setText("Start"); 
+       
         
 
 
@@ -201,14 +205,14 @@ public class MainViewDisplay extends JFrame {
         c.gridheight = 1;
         mainDisplayPane.add(this.openSourceFileButton, c);
 
-//        c = new GridBagConstraints();
-//        c.gridx = 2;
-//        c.gridy = 1;
-//        c.gridwidth = 1;
-//        c.anchor = GridBagConstraints.LINE_START;
-//        c.gridheight = 1;
-//        c.weighty = 1;
-//        mainDisplayPane.add(this.encryptSourceButton, c);
+        c = new GridBagConstraints();
+        c.gridx = 2;
+        c.gridy = 1;
+        c.gridwidth = 1;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.gridheight = 1;
+        c.weighty = 1;
+        mainDisplayPane.add(this.startRandPaintBttn, c);
 
 //        c = new GridBagConstraints();
 //        c.gridx = 3;
@@ -291,5 +295,6 @@ public class MainViewDisplay extends JFrame {
         }
 
         return null;       
-    }    
+    }
+    
 }
