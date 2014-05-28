@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -143,6 +144,7 @@ public class PicFile {
         return image;
     }
     private Random randomNumber = new Random();
+    
     public Color getRandomColour(){
         return new Color(randomNumber.nextFloat(), randomNumber.nextFloat(), randomNumber.nextFloat());
     }
@@ -156,7 +158,7 @@ public class PicFile {
     }
     
     
-    
+    ArrayList<Integer> aryList = new ArrayList();
     
     
     

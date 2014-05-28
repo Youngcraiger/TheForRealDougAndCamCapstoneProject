@@ -205,7 +205,7 @@ public class ModelsAndViewsController {
 
             if (pathToFile != null) {
                 try {
-                    theBackendModel.thePicFile.saveToDisk(pathToFile, "jpg");
+                    theBackendModel.thePicFile.saveToDisk(pathToFile, "png");
                 } catch (IOException ex) {
                     Logger.getLogger(ModelsAndViewsController.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -220,7 +220,7 @@ public class ModelsAndViewsController {
         @Override
         public void actionPerformed(ActionEvent ae) {
 
-                for (int i = 0; i < 1000000; i++) {
+                for (int i = 0; i < (1151*647); i++) {
                     if (theBackendModel.thePicFile != null) {
                         theBackendModel.thePicFile.randPaint();
                         theMainViewDisplay.updatePicContentField();
