@@ -146,15 +146,27 @@ public class PicFile {
     public Color getRandomColour(){
         return new Color(randomNumber.nextFloat(), randomNumber.nextFloat(), randomNumber.nextFloat());
     }
+    public Color getGradiantColour(){
+        
+        return new Color(randomNumber.nextFloat()   , randomNumber.nextFloat(), randomNumber.nextFloat());
+    }
     
     private Random xCoord = new Random();
     private Random yCoord = new Random();
-    
+    int maximum = 5;
+    int minimum = -5;
+    Random rn = new Random();
+    int n = maximum - minimum + 1;
+    int i = rn.nextInt() % n;
+    int randomGrand = minimum + i;
     public Point getRandomPoint(){
         Point p = new Point(xCoord.nextInt(1152), yCoord.nextInt(648));
         return p;
     }
-    
+    public Point getGradiantPoint(){
+        Point p = new Point (xCoord.nextInt(randomGrand), yCoord.nextInt(randomGrand));
+        return p;
+    }
     
     
     
@@ -176,4 +188,18 @@ public class PicFile {
 
            
         }
+    public void Gradiant() {
+        Point p = getGradiantPoint();
+                Color randColor = getRandomColour();
+                setColor(p.x + 1, p.y, randColor);
+                setColor(p.x, p.y + 1, randColor);
+                setColor(p.x, p.y, randColor);
+                setColor(p.x + 1, p.y + 1, randColor);
+                setColor(p.x + 2, p.y + 2, randColor);
+                setColor(p.x, p.y + 2, randColor);
+                setColor(p.x + 2, p.y, randColor);
+                setColor(p.x + 2, p.y + 1, randColor);
+                setColor(p.x + 1, p.y + 2, randColor);
+
+    }
 }

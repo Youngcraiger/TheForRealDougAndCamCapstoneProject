@@ -59,7 +59,8 @@ public class MainViewDisplay extends JFrame {
     JButton saveResultToFileButton;
     JButton encryptSourceButton;
     JButton decryptSourceButton;
-    JButton startRandPaintBttn;
+    JButton startRandPaintButton;
+    JButton startGradiantButton;
     JScrollPane textPane;
     JLabel probsLabel;
     JLabel sortProbsLabel;
@@ -123,23 +124,11 @@ public class MainViewDisplay extends JFrame {
         this.saveResultToFileButton = new JButton();
         this.saveResultToFileButton.setText("Save File");
 
-        this.encryptSourceButton = new JButton();
-        this.encryptSourceButton.setText("Encrypt");
-
-        this.decryptSourceButton = new JButton();
-        this.decryptSourceButton.setText("Decrypt");
-
-        this.probsBttn = new JButton();
-        this.probsBttn.setText("Get Probability");
-
-        this.sortBttn = new JButton();
-        this.sortBttn.setText("Sort Probabilities");
+        this.startGradiantButton = new JButton();
+        this.startGradiantButton.setText("Gradiant");
         
-        this.approxDecryptBttn = new JButton();
-        this.approxDecryptBttn.setText("Approximate Decrypt");
-        
-        this.startRandPaintBttn = new JButton();
-        this.startRandPaintBttn.setText("Start"); 
+        this.startRandPaintButton = new JButton();
+        this.startRandPaintButton.setText("Start"); 
        
         
 
@@ -212,31 +201,16 @@ public class MainViewDisplay extends JFrame {
         c.anchor = GridBagConstraints.LINE_START;
         c.gridheight = 1;
         c.weighty = 1;
-        mainDisplayPane.add(this.startRandPaintBttn, c);
+        mainDisplayPane.add(this.startRandPaintButton, c);
 
-//        c = new GridBagConstraints();
-//        c.gridx = 3;
-//        c.gridy = 1;
-//        mainDisplayPane.add(this.probsBttn, c);
-
-//        c = new GridBagConstraints();
-//        c.gridx = 2;
-//        c.gridy = 3;
-//        c.anchor = GridBagConstraints.LINE_START;
-//        c.gridwidth = 1;
-//        c.gridheight = 1;
-//        c.weighty = 1;
-//        mainDisplayPane.add(this.decryptSourceButton, c);
-        
-//        c = new GridBagConstraints();
-//        c.gridx = 3;
-//        c.gridy = 3;
-//        mainDisplayPane.add(this.sortBttn, c);
-        
-//        c = new GridBagConstraints();
-//        c.gridx = 3;
-//        c.gridy = 6;
-//        mainDisplayPane.add(this.approxDecryptBttn, c);
+                c = new GridBagConstraints();
+        c.gridx = 2;
+        c.gridy = 2;
+        c.gridwidth = 1;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.gridheight = 1;
+        c.weighty = 1;
+        mainDisplayPane.add(this.startGradiantButton, c);
 
         c = new GridBagConstraints();
         c.gridx = 2;

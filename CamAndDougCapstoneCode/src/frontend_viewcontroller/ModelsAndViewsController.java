@@ -220,7 +220,7 @@ public class ModelsAndViewsController {
         @Override
         public void actionPerformed(ActionEvent ae) {
 
-                for (int i = 0; i < 1000000; i++) {
+                for (int i = 0; i < 1151*647; i++) {
                     if (theBackendModel.thePicFile != null) {
                         theBackendModel.thePicFile.randPaint();
                         theMainViewDisplay.updatePicContentField();
@@ -345,7 +345,8 @@ public class ModelsAndViewsController {
         this.theMainViewDisplay.openSourceFileButton.addActionListener(new OpenSourceFileAction());
         this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
         this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
-        this.theMainViewDisplay.startRandPaintBttn.addActionListener(new RandomPaintAction());
+        this.theMainViewDisplay.startRandPaintButton.addActionListener(new RandomPaintAction());
+        this.theMainViewDisplay.startGradiantButton.addActionListener(new RandomPaintAction());
 //        this.theMainViewDisplay.encryptSourceButton.addActionListener(new EncryptSourceAction());
 //        this.theMainViewDisplay.decryptSourceButton.addActionListener(new DecryptSourceAction());
 //        this.theMainViewDisplay.probsBttn.addActionListener(new ProbsAction());
