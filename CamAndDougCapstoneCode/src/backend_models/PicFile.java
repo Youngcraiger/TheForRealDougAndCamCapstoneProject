@@ -153,12 +153,12 @@ public class PicFile {
     
     private Random xCoord = new Random();
     private Random yCoord = new Random();
-    int maximum = 5;
-    int minimum = -5;
+    int max = 5;
+    int min = 0;
     Random rn = new Random();
-    int n = maximum - minimum + 1;
+    int n = max - min + 1;
     int i = rn.nextInt() % n;
-    int randomGrand = minimum + i;
+    int randomGrand = min + i;
     public Point getRandomPoint(){
         Point p = new Point(xCoord.nextInt(1152), yCoord.nextInt(648));
         return p;

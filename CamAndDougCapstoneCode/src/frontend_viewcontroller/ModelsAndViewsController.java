@@ -231,6 +231,22 @@ public class ModelsAndViewsController {
 
             }
       }
+    private class RandomGradiantAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+
+                for (int i = 0; i < 1151*647; i++) {
+                    if (theBackendModel.thePicFile != null) {
+                        theBackendModel.thePicFile.Gradiant();
+                        theMainViewDisplay.updatePicContentField();
+                        
+                    }
+                    
+                }
+
+            }
+      }
 //    private class ProbsAction implements ActionListener {
 //
 //        @Override
@@ -346,7 +362,7 @@ public class ModelsAndViewsController {
         this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
         this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
         this.theMainViewDisplay.startRandPaintButton.addActionListener(new RandomPaintAction());
-        this.theMainViewDisplay.startGradiantButton.addActionListener(new RandomPaintAction());
+        this.theMainViewDisplay.startGradiantButton.addActionListener(new RandomGradiantAction());
 //        this.theMainViewDisplay.encryptSourceButton.addActionListener(new EncryptSourceAction());
 //        this.theMainViewDisplay.decryptSourceButton.addActionListener(new DecryptSourceAction());
 //        this.theMainViewDisplay.probsBttn.addActionListener(new ProbsAction());

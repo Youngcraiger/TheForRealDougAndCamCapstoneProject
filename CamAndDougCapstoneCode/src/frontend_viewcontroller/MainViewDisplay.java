@@ -130,9 +130,6 @@ public class MainViewDisplay extends JFrame {
         this.startRandPaintButton = new JButton();
         this.startRandPaintButton.setText("Start"); 
        
-        
-
-//fuck off
 
 
 
