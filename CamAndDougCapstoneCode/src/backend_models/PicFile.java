@@ -146,11 +146,20 @@ public class PicFile {
     public Color getRandomColour(){
         return new Color(randomNumber.nextFloat(), randomNumber.nextFloat(), randomNumber.nextFloat());
     }
+    float r = randomNumber.nextFloat();
+        float g = randomNumber.nextFloat();
+        float b = randomNumber.nextFloat();
     public Color getGradiantColour(){
-        
-        return new Color(randomNumber.nextFloat()   , randomNumber.nextFloat(), randomNumber.nextFloat());
+        return new Color(r, g, b);
     }
-    
+    public Color getNewGradColour(){
+        r += 5;
+        if( r > 255){
+            g += 5;
+            b +=5;
+        }
+        return new Color(r, g, b);
+    }
     private Random xCoord = new Random();
     private Random yCoord = new Random();
     int max = 5;
@@ -164,8 +173,8 @@ public class PicFile {
         return p;
     }
     public Point getGradiantPoint(){
-        Point p = new Point (xCoord.nextInt(randomGrand), yCoord.nextInt(randomGrand));
-        return p;
+        Point v = new Point (xCoord.nextInt(1152), yCoord.nextInt(648));
+        return v;
     }
     
     
@@ -189,17 +198,18 @@ public class PicFile {
            
         }
     public void Gradiant() {
-        Point p = getGradiantPoint();
-                Color randColor = getRandomColour();
-                setColor(p.x + 1, p.y, randColor);
-                setColor(p.x, p.y + 1, randColor);
-                setColor(p.x, p.y, randColor);
-                setColor(p.x + 1, p.y + 1, randColor);
-                setColor(p.x + 2, p.y + 2, randColor);
-                setColor(p.x, p.y + 2, randColor);
-                setColor(p.x + 2, p.y, randColor);
-                setColor(p.x + 2, p.y + 1, randColor);
-                setColor(p.x + 1, p.y + 2, randColor);
+        Point v = getGradiantPoint();
+                Color gradColor = getGradiantColour();
+                Color newGrad = getNewGradColour();
+                setColor(v.x + 1, v.y, gradColor);
+                setColor(v.x, v.y + 1, gradColor);
+                setColor(v.x, v.y, gradColor);
+                setColor(v.x + 1, v.y + 1, gradColor);
+                setColor(v.x + 2, v.y + 2, gradColor);
+                setColor(v.x, v.y + 2, gradColor);
+                setColor(v.x + 2, v.y, gradColor);
+                setColor(v.x + 2, v.y + 1, gradColor);
+                setColor(v.x + 1, v.y + 2, gradColor);
 
     }
 }
