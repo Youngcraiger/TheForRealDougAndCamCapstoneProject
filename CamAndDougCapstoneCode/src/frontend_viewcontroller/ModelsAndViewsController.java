@@ -64,65 +64,65 @@ public class ModelsAndViewsController {
         public void mouseClicked(MouseEvent e) {
             System.out.print("mouse click"); // comment these print statements out - it's for debug only.
             mouseGetPoint(e);
-            for (int i = 0; i < 1000000; i++) {
-                Point p = theBackendModel.thePicFile.getRandomPoint();
-                Color randColor = theBackendModel.thePicFile.getRandomColour();
-                theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
-                theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
-                theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
-                theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
-
-                theMainViewDisplay.updatePicContentField();
-
-            }
+//            for (int i = 0; i < 1000000; i++) {
+//                Point p = theBackendModel.thePicFile.getRandomPoint();
+//                Color randColor = theBackendModel.thePicFile.getRandomColor();
+//                theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
+//                theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
+//                theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
+//                theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
+//
+//                theMainViewDisplay.updatePicContentField();
+//
+//            }
 
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            System.out.print("mouse press");
+            //System.out.print("mouse press");
             mouseGetPoint(e);
 
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            System.out.print("mouse release");
+            //System.out.print("mouse release");
             mouseGetPoint(e);
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            System.out.print("mouse enter");
+            //System.out.print("mouse enter");
             mouseGetPoint(e);
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-            System.out.print("mouse exit");
+            //System.out.print("mouse exit");
             mouseGetPoint(e);
         }
 
         @Override
         public void mouseDragged(MouseEvent e) {
-            System.out.print("mouse dragged");
+            //System.out.print("mouse dragged");
             mouseGetPoint(e);
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            System.out.print("mouse moved");
+            //System.out.print("mouse moved");
             mouseGetPoint(e);
         }
 
         private void mouseGetPoint(MouseEvent e) {
             Point p = e.getPoint();
-            System.out.println(" x y: " + p.x + " " + p.y);
+            //System.out.println(" x y: " + p.x + " " + p.y);
         }
 
         private void paint(MouseEvent e) {
@@ -130,23 +130,23 @@ public class ModelsAndViewsController {
 
         }
 
-        public void randPaint() {
-            for (int i = 0; i < 1000000; i++) {
-                Point p = theBackendModel.thePicFile.getRandomPoint();
-                Color randColor = theBackendModel.thePicFile.getRandomColour();
-                theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
-                theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
-                theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
-                theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
-                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
-
-                theMainViewDisplay.updatePicContentField();
-            }
-        }
+//        public void randPaint() {
+//            for (int i = 0; i < 1000000; i++) {
+//                Point p = theBackendModel.thePicFile.getRandomPoint();
+//                Color randColor = theBackendModel.thePicFile.getRandomColor();
+//                theBackendModel.thePicFile.setColor(p.x + 1, p.y, randColor);
+//                theBackendModel.thePicFile.setColor(p.x, p.y + 1, randColor);
+//                theBackendModel.thePicFile.setColor(p.x, p.y, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, randColor);
+//                theBackendModel.thePicFile.setColor(p.x, p.y + 2, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 2, p.y, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, randColor);
+//                theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, randColor);
+//
+//                theMainViewDisplay.updatePicContentField();
+//            }
+//        }
     }
 
     /*
@@ -219,18 +219,51 @@ public class ModelsAndViewsController {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
+            if (theBackendModel.thePicFile != null) {
+                for (int i = 0; i < (theBackendModel.thePicFile.getHeight() * theBackendModel.thePicFile.getWidth()); i++) {
+                    theBackendModel.thePicFile.randPaint();
+                    theMainViewDisplay.updatePicContentField();
 
-                for (int i = 0; i < (1151*647); i++) {
-                    if (theBackendModel.thePicFile != null) {
-                        theBackendModel.thePicFile.randPaint();
-                        theMainViewDisplay.updatePicContentField();
-                        
-                    }
-                    
                 }
 
             }
-      }
+
+        }
+    }
+
+    private class sorttedPaintAction implements ActionListener {
+
+        int f = 0;
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            if (theBackendModel.thePicFile != null) {
+                for (int i = 0; i < (theBackendModel.thePicFile.getHeight() * theBackendModel.thePicFile.getWidth()); i++) {
+
+                    //System.out.println("sorrtedPaintAction print line 1");
+                    Point p = theBackendModel.thePicFile.pixelChooser();
+                    //System.out.println("sorrtedPaintAction print line 2");
+                    Color c = theBackendModel.thePicFile.getRandomColor();
+                    theBackendModel.thePicFile.setColor(p.x + 1, p.y, c);
+                    theBackendModel.thePicFile.setColor(p.x, p.y + 1, c);
+                    theBackendModel.thePicFile.setColor(p.x, p.y, c);
+                    theBackendModel.thePicFile.setColor(p.x + 1, p.y + 1, c);
+                    theBackendModel.thePicFile.setColor(p.x + 2, p.y + 2, c);
+                    theBackendModel.thePicFile.setColor(p.x, p.y + 2, c);
+                    theBackendModel.thePicFile.setColor(p.x + 2, p.y, c);
+                    theBackendModel.thePicFile.setColor(p.x + 2, p.y + 1, c);
+                    theBackendModel.thePicFile.setColor(p.x + 1, p.y + 2, c);
+
+                    theMainViewDisplay.updatePicContentField();
+                    //System.out.println("sorttedPaintAction print line 3");
+                    f += 1;
+                    System.out.println(f);
+                }
+                System.out.println("a:" + theBackendModel.thePicFile.a);
+                System.out.println("b:" + theBackendModel.thePicFile.b);
+            }
+        }
+    }
 //    private class ProbsAction implements ActionListener {
 //
 //        @Override
@@ -345,7 +378,8 @@ public class ModelsAndViewsController {
         this.theMainViewDisplay.openSourceFileButton.addActionListener(new OpenSourceFileAction());
         this.theMainViewDisplay.picContentPane.addMouseMotionListener(new MouseAction());
         this.theMainViewDisplay.picContentPane.addMouseListener(new MouseAction());
-        this.theMainViewDisplay.startRandPaintBttn.addActionListener(new RandomPaintAction());
+        this.theMainViewDisplay.startRandPaintButton.addActionListener(new RandomPaintAction());
+        this.theMainViewDisplay.sortedArtButton.addActionListener(new sorttedPaintAction());
 //        this.theMainViewDisplay.encryptSourceButton.addActionListener(new EncryptSourceAction());
 //        this.theMainViewDisplay.decryptSourceButton.addActionListener(new DecryptSourceAction());
 //        this.theMainViewDisplay.probsBttn.addActionListener(new ProbsAction());

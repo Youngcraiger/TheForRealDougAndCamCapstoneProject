@@ -59,7 +59,7 @@ public class MainViewDisplay extends JFrame {
     JButton saveResultToFileButton;
     JButton encryptSourceButton;
     JButton decryptSourceButton;
-    JButton startRandPaintBttn;
+    JButton startRandPaintButton;
     JScrollPane textPane;
     JLabel probsLabel;
     JLabel sortProbsLabel;
@@ -67,6 +67,7 @@ public class MainViewDisplay extends JFrame {
     JButton probsBttn;
     JButton approxDecryptBttn;
     JLabel picContentPane;
+    JButton sortedArtButton;
 
     /*
      *
@@ -119,6 +120,9 @@ public class MainViewDisplay extends JFrame {
 
         this.openSourceFileButton = new JButton();
         this.openSourceFileButton.setText("Open File");
+        
+        this.sortedArtButton = new JButton();
+        this.sortedArtButton.setText("Sort The Art");
 
         this.saveResultToFileButton = new JButton();
         this.saveResultToFileButton.setText("Save File");
@@ -138,8 +142,8 @@ public class MainViewDisplay extends JFrame {
         this.approxDecryptBttn = new JButton();
         this.approxDecryptBttn.setText("Approximate Decrypt");
         
-        this.startRandPaintBttn = new JButton();
-        this.startRandPaintBttn.setText("Start"); 
+        this.startRandPaintButton = new JButton();
+        this.startRandPaintButton.setText("Start"); 
        
         
 
@@ -212,8 +216,15 @@ public class MainViewDisplay extends JFrame {
         c.anchor = GridBagConstraints.LINE_START;
         c.gridheight = 1;
         c.weighty = 1;
-        mainDisplayPane.add(this.startRandPaintBttn, c);
+        mainDisplayPane.add(this.startRandPaintButton, c);
 
+        c = new GridBagConstraints();
+        c.gridx = 2;
+        c.gridy = 2;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        mainDisplayPane.add(this.sortedArtButton, c);
+        
 //        c = new GridBagConstraints();
 //        c.gridx = 3;
 //        c.gridy = 1;
@@ -240,7 +251,7 @@ public class MainViewDisplay extends JFrame {
 
         c = new GridBagConstraints();
         c.gridx = 2;
-        c.gridy = 6;
+        c.gridy = 3;
         c.gridwidth = 1;
         c.gridheight = 1;
         mainDisplayPane.add(this.saveResultToFileButton, c);

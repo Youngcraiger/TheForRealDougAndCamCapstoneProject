@@ -28,7 +28,6 @@ public class PicFile {
         this.path = path;
         this.fileContent = readFile(path);
     }
-    
 
     public int getWidth() {
         int i = fileContent.getWidth();
@@ -70,7 +69,6 @@ public class PicFile {
 
         // How do you calculate the (x,y) pixel coordinate
         // based on the pIndex parameter above?
-
         int y = pIndex;
         int x = pIndex;
         return this.getColor(x, y); // this line is fine, fix the above 2 lines
@@ -118,8 +116,6 @@ public class PicFile {
         ImageIcon icon = new ImageIcon(this.fileContent);
         return icon;
     }
-    
-
 
     // this method is completed for you
     public void saveToDisk(String pathWithoutExtension, String jpgOrPngExtension) throws IOException {
@@ -144,38 +140,181 @@ public class PicFile {
         return image;
     }
     private Random randomNumber = new Random();
-    
-    public Color getRandomColour(){
-        return new Color(randomNumber.nextFloat(), randomNumber.nextFloat(), randomNumber.nextFloat());
+
+    public Color getRandomColor() {
+        Color c = new Color(randomNumber.nextFloat(), randomNumber.nextFloat(), randomNumber.nextFloat());
+//        if (!checkAndStore(c)) {
+//            c = getRandomColor();
+//        }
+
+        return c;
     }
-    
+
     private Random xCoord = new Random();
     private Random yCoord = new Random();
-    
-    public Point getRandomPoint(){
+
+    public Point getRandomPoint() {
         Point p = new Point(xCoord.nextInt(1151), yCoord.nextInt(647));
+//        if (!checkAndStore(p)) {
+//            p = getRandomPoint();
+//        }
         return p;
     }
-    
-    
-    ArrayList<Integer> aryList = new ArrayList();
-    
-    
-    
-    public void randPaint() {
-           
-                Point p = getRandomPoint();
-                Color randColor = getRandomColour();
-                setColor(p.x + 1, p.y, randColor);
-                setColor(p.x, p.y + 1, randColor);
-                setColor(p.x, p.y, randColor);
-                setColor(p.x + 1, p.y + 1, randColor);
-                setColor(p.x + 2, p.y + 2, randColor);
-                setColor(p.x, p.y + 2, randColor);
-                setColor(p.x + 2, p.y, randColor);
-                setColor(p.x + 2, p.y + 1, randColor);
-                setColor(p.x + 1, p.y + 2, randColor);
+   
+    public Point lastPoint = new Point(0, 0), newPoint;
+    private boolean left = false, right = false, up = false, down = false, used = true;
+    public int a = 0;
+    public int b = 0;
+    public Point pixelChooser() {
+        if (used == true) {
+            used = false;
+            left = true;
+            a += 1;
+            return lastPoint;
+        } 
 
-           
+        if (right == true) {
+            if (lastPoint.x + 3 <= fileContent.getWidth()) {
+                newPoint = new Point(lastPoint.x + 3, lastPoint.y);
+                lastPoint = newPoint;
+                return newPoint;
+            } else {
+                down = true;
+                right = false;
+            }
         }
+
+        if (down == true) {
+            if (lastPoint.y + 3 <= fileContent.getHeight()) {
+                newPoint = new Point(lastPoint.x, lastPoint.y + 3);
+                lastPoint = newPoint;
+                return newPoint;
+            } else {
+
+                left = true;
+                down = false;
+            }
+        }
+
+        if (left == true) {
+            if (lastPoint.y + 3 >= 0) {
+                newPoint = new Point(lastPoint.x - 3, lastPoint.y);
+                lastPoint = newPoint;
+                return newPoint;
+            }else{
+                up = true;
+                left = false;
+            }
+        }
+        
+        if(up == true){
+            if(lastPoint.y + 3 >= 0){
+                newPoint = new Point(lastPoint.x, lastPoint.y - 3);
+                lastPoint = newPoint;
+                return newPoint;
+            }else{
+                right = true;
+                up = false;                        
+            }
+        }
+        b += 1;
+        Point p = new Point(35,90);
+        return p;
+    }
+
+    public void randPaint() {
+        boolean workColor = false;
+        boolean workCoord = false;
+        Point p = getRandomPoint();
+        Color randColor = getRandomColor();
+        while (workCoord = false) {
+            if (checkAndStore(p) == false) {
+                p = getRandomPoint();
+            } else {
+                workCoord = true;
+            }
+        }
+        while (workColor = false) {
+            if (checkAndStore(randColor) == false) {
+                randColor = getRandomColor();
+            } else {
+                workColor = true;
+            }
+        }
+        Point s = new Point();
+        setColor(p.x, p.y, randColor);
+        setColor(p.x + 1, p.y, randColor);
+        setColor(p.x, p.y + 1, randColor);
+        setColor(p.x + 1, p.y + 1, randColor);
+        setColor(p.x + 2, p.y, randColor);
+        setColor(p.x, p.y + 2, randColor);
+        setColor(p.x + 2, p.y + 2, randColor);
+        setColor(p.x + 2, p.y + 1, randColor);
+        setColor(p.x + 1, p.y + 2, randColor);
+
+    }
+//
+//    private int getScreenWidth() {
+//        return 1151;
+//    }
+//
+//    private int getScreenHeight() {
+//        return 647;
+//    }
+    private ArrayList<String> coordList = new ArrayList<String>();
+
+    private boolean checkCoord(Point p) {
+        String s = p.getX() + "," + p.getY();
+        for (int i = 0; i < coordList.size(); i++) {
+            if ((coordList.get(i)).equalsIgnoreCase(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private int coordIndex = 0;
+    private int colorIndex = 0;
+
+    private void storeCoord(Point p) {
+        String s = p.getX() + " , " + p.getY();
+        coordList.add(coordIndex, s);
+        coordIndex += 1;
+
+    }
+    private ArrayList<String> colorList = new ArrayList<String>();
+
+    public boolean checkColor(Color c) {
+        String s = c.getRed() + "," + c.getGreen() + "," + c.getBlue();
+        for (int i = 0; i < colorList.size(); i++) {
+            if ((colorList.get(i)).equalsIgnoreCase(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void storeColor(Color c) {
+        String s = c.getRed() + "," + c.getGreen() + "," + c.getBlue();
+        colorList.add(colorIndex, s);
+    }
+
+    public boolean checkAndStore(Point p) {
+        if (checkCoord(p) == false) {
+            storeCoord(p);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkAndStore(Color c) {
+        if (checkColor(c) == false) {
+            storeColor(c);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
