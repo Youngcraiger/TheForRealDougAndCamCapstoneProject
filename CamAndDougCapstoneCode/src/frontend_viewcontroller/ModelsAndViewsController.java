@@ -62,7 +62,7 @@ public class ModelsAndViewsController {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            System.out.print("mouse click"); // comment these print statements out - it's for debug only.
+            //System.out.print("mouse click");  comment these print statements out - it's for debug only.
             mouseGetPoint(e);
 //            for (int i = 0; i < 1000000; i++) {
 //                Point p = theBackendModel.thePicFile.getRandomPoint();
