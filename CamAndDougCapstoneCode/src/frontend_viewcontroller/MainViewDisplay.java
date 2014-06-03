@@ -60,7 +60,10 @@ public class MainViewDisplay extends JFrame {
     JButton encryptSourceButton;
     JButton decryptSourceButton;
     JButton startRandPaintButton;
+<<<<<<< HEAD
     JButton startGradiantButton;
+=======
+>>>>>>> origin/master
     JScrollPane textPane;
     JLabel probsLabel;
     JLabel sortProbsLabel;
@@ -68,6 +71,7 @@ public class MainViewDisplay extends JFrame {
     JButton probsBttn;
     JButton approxDecryptBttn;
     JLabel picContentPane;
+    JButton sortedArtButton;
 
     /*
      *
@@ -120,6 +124,9 @@ public class MainViewDisplay extends JFrame {
 
         this.openSourceFileButton = new JButton();
         this.openSourceFileButton.setText("Open File");
+        
+        this.sortedArtButton = new JButton();
+        this.sortedArtButton.setText("Sort The Art");
 
         this.saveResultToFileButton = new JButton();
         this.saveResultToFileButton.setText("Save File");
@@ -127,6 +134,12 @@ public class MainViewDisplay extends JFrame {
         this.startGradiantButton = new JButton();
         this.startGradiantButton.setText("Gradiant");
         
+<<<<<<< HEAD
+=======
+        this.approxDecryptBttn = new JButton();
+        this.approxDecryptBttn.setText("Approximate Decrypt");
+        
+>>>>>>> origin/master
         this.startRandPaintButton = new JButton();
         this.startRandPaintButton.setText("Start"); 
        
@@ -199,6 +212,21 @@ public class MainViewDisplay extends JFrame {
         c.gridheight = 1;
         c.weighty = 1;
         mainDisplayPane.add(this.startRandPaintButton, c);
+<<<<<<< HEAD
+=======
+
+        c = new GridBagConstraints();
+        c.gridx = 2;
+        c.gridy = 2;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        mainDisplayPane.add(this.sortedArtButton, c);
+        
+//        c = new GridBagConstraints();
+//        c.gridx = 3;
+//        c.gridy = 1;
+//        mainDisplayPane.add(this.probsBttn, c);
+>>>>>>> origin/master
 
                 c = new GridBagConstraints();
         c.gridx = 2;
@@ -211,7 +239,7 @@ public class MainViewDisplay extends JFrame {
 
         c = new GridBagConstraints();
         c.gridx = 2;
-        c.gridy = 6;
+        c.gridy = 3;
         c.gridwidth = 1;
         c.gridheight = 1;
         mainDisplayPane.add(this.saveResultToFileButton, c);
